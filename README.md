@@ -82,18 +82,6 @@ Our mission is to democratize access to advanced financial tools that were previ
 - **Smart Contract Suite** — 6 deployed Solidity contracts for perpetual trading
 - **On-Chain Operations** — Direct BSC contract interaction via ethers.js
 
-## Smart Contracts (BSC Mainnet)
-
-| Contract | Address |
-|----------|---------|
-| **Insurance** | `0xB1dDE178a957E1942346803cD60Ab571B30e4015` |
-| **Oracle** | `0x2734cc8c80fc25ee526b77dcf80ad3fc9776b569` |
-| **Vault** | `0x286d439Db323f10132Bff6A70F4063c932dFC911` |
-| **Funding** | `0x96754a550990ef3495ed75b1af7939b0faa027da` |
-| **Liquidation** | `0x53bb6bc45ffe45926c412dd1e7f9f9816d5f1721` |
-| **Perps** | `0xe04c4095ce6e638ce86853e7c71311a9f1ca1a76` |
-| **Staking** | `0xa409010F4E52483F871fecf6F0e6B4b95723B8e9` |
-
 ## Tokenomics
 
 | Metric | Details |
