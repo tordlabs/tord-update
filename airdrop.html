@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>TORD Airdrop | Tord Labs</title>
+  <meta property="og:title" content="TORD Airdrop | Tord Labs" />
+  <meta property="og:description" content="Complete tasks and earn $TORD tokens in our massive crypto airdrop campaign." />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-card: #111111;
+      --bg-card-hover: #1a1a1a;
+      --border: #222222;
+      --border-hover: #333333;
+      --text-primary: #ffffff;
+      --text-secondary: #999999;
+      --text-muted: #666666;
+      --accent-gold: #f5a623;
+      --accent-gold-dim: rgba(245, 166, 35, 0.15);
+      --accent-purple: #a855f7;
+      --accent-cyan: #22d3ee;
+      --accent-green: #22c55e;
+      --accent-red: #ef4444;
+      --accent-blue: #3b82f6;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Space Grotesk', sans-serif;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 32px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .navbar-brand img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .navbar-brand span {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 2px;
+    }
+
+    .navbar-back {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .navbar-back:hover { color: var(--accent-gold); }
+
+    .container {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+
+    .neon-border {
+      position: relative;
+      border-radius: 12px;
+      overflow: visible;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .neon-border:hover {
+      transform: translateY(-4px) scale(1.005);
+      box-shadow: 0 8px 32px rgba(245, 166, 35, 0.15);
+    }
+    .neon-border::before {
+      content: '';
+      position: absolute;
+      top: -2px; left: -2px; right: -2px; bottom: -2px;
+      border-radius: 14px;
+      background: conic-gradient(from var(--snake-angle, 0deg), transparent 0%, transparent 60%, rgba(245,166,35,0.3) 70%, #f5a623 80%, #ffcc00 85%, #f5a623 90%, rgba(245,166,35,0.3) 95%, transparent 100%);
+      animation: snakeRotate 3s linear infinite;
+      z-index: -1;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      padding: 2px;
+      transition: opacity 0.3s ease;
+    }
+    .neon-border:hover::before {
+      opacity: 1;
+      background: conic-gradient(from var(--snake-angle, 0deg), transparent 0%, transparent 50%, rgba(245,166,35,0.5) 65%, #f5a623 75%, #ffcc00 82%, #f5a623 88%, rgba(245,166,35,0.5) 95%, transparent 100%);
+    }
+    .neon-border::after {
+      content: '';
+      position: absolute;
+      top: -4px; left: -4px; right: -4px; bottom: -4px;
+      border-radius: 16px;
+      background: conic-gradient(from var(--snake-angle, 0deg), transparent 0%, transparent 60%, rgba(245,166,35,0.1) 70%, rgba(245,166,35,0.3) 80%, rgba(255,204,0,0.4) 85%, rgba(245,166,35,0.3) 90%, rgba(245,166,35,0.1) 95%, transparent 100%);
+      animation: snakeRotate 3s linear infinite;
+      filter: blur(8px);
+      z-index: -2;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      padding: 4px;
+      transition: filter 0.3s ease, opacity 0.3s ease;
+    }
+    .neon-border:hover::after {
+      filter: blur(14px);
+      opacity: 0.9;
+      background: conic-gradient(from var(--snake-angle, 0deg), transparent 0%, transparent 50%, rgba(245,166,35,0.2) 65%, rgba(245,166,35,0.5) 75%, rgba(255,204,0,0.6) 82%, rgba(245,166,35,0.5) 88%, rgba(245,166,35,0.2) 95%, transparent 100%);
+    }
+    @property --snake-angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+    @keyframes snakeRotate {
+      to { --snake-angle: 360deg; }
+    }
+
+    .stats-bar {
+      display: flex;
+      border: none;
+      border-radius: 12px;
+      overflow: visible;
+      margin-bottom: 24px;
+      background: linear-gradient(145deg, rgba(17,17,17,1), rgba(20,18,14,1));
+      box-shadow: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-item {
+      flex: 1;
+      text-align: center;
+      padding: 18px 12px;
+      position: relative;
+    }
+
+    .stat-item:first-child {
+      border-right: 1px solid rgba(245, 166, 35, 0.15);
+    }
+
+    .stat-value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(17,17,17,1), rgba(20,18,14,1));
+      border: none;
+      border-radius: 12px;
+      overflow: visible;
+      margin-bottom: 24px;
+      box-shadow: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid rgba(245, 166, 35, 0.15);
+    }
+
+    .card-header h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .banner-img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 0;
+    }
+
+    .card-body {
+      padding: 20px 24px;
+    }
+
+    .card-body p {
+      color: var(--text-secondary);
+      font-size: 14px;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .login-section {
+      text-align: center;
+      padding: 16px 24px 20px;
+      border-top: 1px solid rgba(245, 166, 35, 0.15);
+    }
+
+    .login-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, opacity 0.2s;
+      font-size: 16px;
+      color: white;
+    }
+
+    .social-btn:hover { transform: scale(1.1); opacity: 0.9; }
+
+    .social-btn.metamask { background: linear-gradient(135deg, #e2761b, #cd6116); }
+    .social-btn.twitter { background: #000000; border: 1px solid #333; }
+    .social-btn.discord { background: #5865F2; }
+    .social-btn.telegram { background: #229ED9; }
+
+    .ways-header {
+      text-align: center;
+      padding: 16px;
+      border-bottom: 1px solid rgba(245, 166, 35, 0.15);
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .ways-header span {
+      color: var(--accent-gold);
+      font-weight: 600;
+    }
+
+    .entry-list {
+      list-style: none;
+    }
+
+    .entry-item {
+      display: flex;
+      align-items: center;
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(245, 166, 35, 0.1);
+      cursor: pointer;
+      transition: background 0.2s;
+      gap: 14px;
+    }
+
+    .entry-item:last-child { border-bottom: none; }
+    .entry-item:hover { background: var(--bg-card-hover); }
+
+    .entry-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .entry-icon.wallet { background: var(--accent-gold-dim); color: var(--accent-gold); }
+    .entry-icon.x { background: rgba(255,255,255,0.08); color: #fff; }
+    .entry-icon.discord { background: rgba(88,101,242,0.15); color: #5865F2; }
+    .entry-icon.telegram { background: rgba(34,158,217,0.15); color: #229ED9; }
+    .entry-icon.share { background: rgba(239,68,96,0.15); color: #ef4460; }
+    .entry-icon.bonus { background: rgba(245,166,35,0.15); color: var(--accent-gold); }
+
+    .entry-text {
+      flex: 1;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .entry-points {
+      background: rgba(245, 166, 35, 0.1);
+      color: var(--accent-gold);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .entry-lock {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-left: 6px;
+    }
+
+    .entry-expand {
+      display: none;
+      padding: 16px 20px;
+      background: rgba(0,0,0,0.3);
+      border-bottom: 1px solid rgba(245, 166, 35, 0.1);
+    }
+
+    .entry-expand.active { display: block; }
+
+    .entry-expand input,
+    .entry-expand a.action-btn {
+      display: block;
+      width: 100%;
+    }
+
+    .entry-expand input {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: var(--text-primary);
+      font-size: 14px;
+      font-family: 'Space Grotesk', sans-serif;
+      outline: none;
+      margin-bottom: 10px;
+    }
+
+    .entry-expand input:focus { border-color: var(--accent-gold); }
+    .entry-expand input::placeholder { color: var(--text-muted); }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--accent-gold), #e0941a);
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: 'Space Grotesk', sans-serif;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+      text-decoration: none;
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-family: 'Space Grotesk', sans-serif;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      text-decoration: none;
+      margin-top: 8px;
+      width: 100%;
+    }
+
+    .btn-outline:hover { border-color: var(--text-secondary); color: var(--text-primary); }
+
+    .entry-completed {
+      background: rgba(34, 197, 94, 0.08);
+    }
+
+    .entry-completed .entry-points {
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--accent-green);
+    }
+
+    .check-icon {
+      color: var(--accent-green);
+      font-size: 16px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 24px 16px;
+      color: var(--text-muted);
+      font-size: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .footer a:hover { color: var(--accent-gold); }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--bg-card);
+      border: 1px solid var(--accent-gold);
+      color: var(--text-primary);
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 14px;
+      z-index: 200;
+      opacity: 0;
+      transition: transform 0.3s, opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    .countdown-timer {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .countdown-unit {
+      text-align: center;
+    }
+
+    .countdown-value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    .countdown-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      letter-spacing: 1px;
+    }
+
+    .countdown-sep {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 24px;
+      color: var(--text-muted);
+      padding-top: 4px;
+    }
+
+    .progress-bar-container {
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      height: 6px;
+      margin: 16px 24px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-gold), #e0941a);
+      border-radius: 8px;
+      transition: width 0.5s ease;
+    }
+
+    .progress-text {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      padding: 0 24px 12px;
+    }
+
+    @media (max-width: 560px) {
+      .container { padding: 20px 12px 48px; }
+      .navbar { padding: 12px 16px; }
+      .stat-value, .countdown-value { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">
+      <img src="/logo.png" alt="Tord Labs" />
+      <span>TORD LABS</span>
+    </a>
+    <a href="/" class="navbar-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+      Back to Home
+    </a>
+  </nav>
+
+  <div class="container">
+    <div class="stats-bar neon-border">
+      <!-- YOUR REWARD section temporarily hidden
+      <div class="stat-item">
+        <div class="stat-value" id="totalEntries">0</div>
+        <div class="stat-label">Your Reward</div>
+      </div>
+      -->
+      <div class="stat-item">
+        <div class="countdown-timer" id="countdown">
+          <div class="countdown-unit">
+            <div class="countdown-value" id="cd-days">--</div>
+            <div class="countdown-label">Days</div>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <div class="countdown-value" id="cd-hours">--</div>
+            <div class="countdown-label">Hrs</div>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <div class="countdown-value" id="cd-mins">--</div>
+            <div class="countdown-label">Min</div>
+          </div>
+        </div>
+        <div class="stat-label">Time Left</div>
+      </div>
+    </div>
+
+    <div class="card neon-border">
+      <div class="card-header">
+        <h2>$TORD Airdrop Campaign</h2>
+      </div>
+
+      <img src="/airdrop-banner.png" alt="TORD Airdrop" style="width:100%;border-radius:12px;margin-bottom:4px;" />
+
+      <div class="card-body">
+        <h3 style="font-family:'Orbitron',sans-serif;font-size:16px;font-weight:700;text-align:center;margin-bottom:12px;color:var(--accent-gold);">TordLabs Airdrop — 200 Winners<br><span style="color:var(--text-primary);font-size:14px;">Total Prize 10.000.000 $TORD</span></h3>
+        <p>Earn free $TORD tokens by completing simple tasks below. Follow our social channels, share with friends, and climb the leaderboard for bonus rewards.</p>
+      </div>
+
+      <div class="login-section" id="loginSection">
+        <div class="login-label">Connect to participate:</div>
+        <div class="social-buttons">
+          <button class="social-btn twitter" onclick="connectX()" title="Connect with X" style="width:auto;border-radius:8px;padding:10px 24px;gap:8px;display:inline-flex;align-items:center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <span style="font-size:14px;font-weight:600;">Connect with X</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card neon-border" id="entriesCard">
+      <div class="ways-header">
+        <span>6</span> Ways to Enter
+      </div>
+
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
+      </div>
+      <div class="progress-text" id="progressText">0 of 8 tasks completed</div>
+
+      <ul class="entry-list" id="entryList">
+        <li class="entry-item" data-task="wallet" onclick="toggleTask(this)">
+          <div class="entry-icon wallet">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M22 10H2"/></svg>
+          </div>
+          <span class="entry-text">Enter Your BNB Wallet Address</span>
+        </li>
+        <li class="entry-expand" id="expand-wallet">
+          <input type="text" id="walletInput" placeholder="0x... your BNB/BSC wallet address" />
+          <button class="btn-primary" onclick="completeTask('wallet')">Submit Wallet</button>
+          <button class="btn-outline" onclick="toggleTask(document.querySelector('[data-task=wallet]'))">Cancel</button>
+        </li>
+
+        <li class="entry-item" data-task="follow" onclick="toggleTask(this)">
+          <div class="entry-icon x">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </div>
+          <span class="entry-text">Follow @torddefi on X</span>
+          <span class="entry-points">10K $TORD</span>
+        </li>
+        <li class="entry-expand" id="expand-follow">
+          <a href="https://twitter.com/intent/follow?screen_name=torddefi" target="_blank" class="btn-primary" id="followOpenBtn" onclick="onFollowClicked()">Follow @torddefi</a>
+          <button class="btn-primary" id="followVerifyBtn" style="display:none;width:100%;margin-top:6px;background:#22c55e;border-color:#22c55e;" onclick="completeTask('follow')">I've Followed - Verify ✓</button>
+          <button class="btn-outline" onclick="toggleTask(document.querySelector('[data-task=follow]'))">Cancel</button>
+        </li>
+
+        <li class="entry-item" data-task="tweet" onclick="toggleTask(this)">
+          <div class="entry-icon x">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </div>
+          <span class="entry-text">Tweet About $TORD</span>
+          <span class="entry-points">10K $TORD</span>
+        </li>
+        <li class="entry-expand" id="expand-tweet">
+          <p style="font-size:13px;color:var(--text-secondary);margin:0 0 10px;">Tag 5 friends (enter their X usernames):</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px;">
+            <input type="text" id="tag1" placeholder="@friend1" style="background:var(--bg-card);border:1px solid var(--border-gold);color:var(--text-primary);padding:8px 10px;border-radius:6px;font-size:13px;">
+            <input type="text" id="tag2" placeholder="@friend2" style="background:var(--bg-card);border:1px solid var(--border-gold);color:var(--text-primary);padding:8px 10px;border-radius:6px;font-size:13px;">
+            <input type="text" id="tag3" placeholder="@friend3" style="background:var(--bg-card);border:1px solid var(--border-gold);color:var(--text-primary);padding:8px 10px;border-radius:6px;font-size:13px;">
+            <input type="text" id="tag4" placeholder="@friend4" style="background:var(--bg-card);border:1px solid var(--border-gold);color:var(--text-primary);padding:8px 10px;border-radius:6px;font-size:13px;">
+            <input type="text" id="tag5" placeholder="@friend5" style="background:var(--bg-card);border:1px solid var(--border-gold);color:var(--text-primary);padding:8px 10px;border-radius:6px;font-size:13px;">
+          </div>
+          <button class="btn-primary" id="tweetOpenBtn" onclick="postTweetWithTags()" style="width:100%;margin-bottom:6px;">Post on X</button>
+          <button class="btn-primary" id="tweetVerifyBtn" style="display:none;width:100%;margin-bottom:6px;background:#22c55e;border-color:#22c55e;" onclick="completeTask('tweet')">I've Tweeted - Verify ✓</button>
+          <button class="btn-outline" onclick="toggleTask(document.querySelector('[data-task=tweet]'))">Cancel</button>
+        </li>
+
+        <li class="entry-item" data-task="telegram" onclick="toggleTask(this)">
+          <div class="entry-icon telegram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </div>
+          <span class="entry-text">Join @TordLabs on Telegram</span>
+          <span class="entry-points">10K $TORD</span>
+        </li>
+        <li class="entry-expand" id="expand-telegram">
+          <a href="https://t.me/tordlabs" target="_blank" class="btn-primary" id="telegramOpenBtn" onclick="onTelegramClicked()">Join Telegram</a>
+          <button class="btn-primary" id="telegramVerifyBtn" style="display:none;width:100%;margin-top:6px;background:#22c55e;border-color:#22c55e;" disabled onclick="completeTask('telegram')">Wait 5s...</button>
+          <button class="btn-outline" onclick="toggleTask(document.querySelector('[data-task=telegram]'))">Cancel</button>
+        </li>
+
+        <li class="entry-item" data-task="share" onclick="toggleTask(this)">
+          <div class="entry-icon wallet">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </div>
+          <span class="entry-text">Visit Tord Website</span>
+          <span class="entry-points">10K $TORD</span>
+        </li>
+        <li class="entry-expand" id="expand-share">
+          <div id="shareContent">
+            <a href="https://tordlabs.com/" target="_blank" class="btn-primary" id="visitOpenBtn" onclick="onVisitClicked()">Visit tordlabs.com</a>
+            <button class="btn-primary" id="visitVerifyBtn" style="display:none;width:100%;margin-top:6px;background:#22c55e;border-color:#22c55e;" onclick="completeTask('share')">I've Visited - Verify ✓</button>
+            <button class="btn-outline" onclick="toggleTask(document.querySelector('[data-task=share]'))">Cancel</button>
+          </div>
+        </li>
+
+        <li class="entry-item" data-task="bonus" onclick="toggleTask(this)">
+          <div class="entry-icon bonus">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <span class="entry-text">Complete Every Action For 10K Bonus $TORD</span>
+          <span class="entry-points">10K $TORD</span>
+          <span class="entry-lock" id="bonusLock">&#128274;</span>
+        </li>
+        <li class="entry-expand" id="expand-bonus">
+          <div id="bonusContent"></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      <a href="#" onclick="document.getElementById('termsModal').style.display='flex';return false;">Terms & Conditions</a> &nbsp;|&nbsp; &copy; Tord Labs
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <div id="termsModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:300;align-items:center;justify-content:center;padding:24px;">
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;max-width:520px;width:100%;max-height:80vh;overflow-y:auto;padding:32px;">
+      <h3 style="font-family:'Orbitron',sans-serif;font-size:16px;margin-bottom:16px;">Terms & Conditions</h3>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.8;">
+        <p style="margin-bottom:12px;">1. <strong>Eligibility:</strong> The $TORD Airdrop Campaign is open to all participants worldwide. You must complete the required tasks to earn entries.</p>
+        <p style="margin-bottom:12px;">2. <strong>No Purchase Necessary:</strong> No purchase is required to enter or receive tokens. Completing tasks does not guarantee token distribution.</p>
+        <p style="margin-bottom:12px;">3. <strong>Token Distribution:</strong> $TORD tokens will be distributed to eligible participants after the campaign ends. The amount received is proportional to entries earned.</p>
+        <p style="margin-bottom:12px;">4. <strong>Wallet Requirements:</strong> A valid BNB/BSC-compatible wallet address is required to receive tokens. Tord Labs is not responsible for tokens sent to incorrect addresses.</p>
+        <p style="margin-bottom:12px;">5. <strong>Fraud Prevention:</strong> Multiple entries using different identities or automated methods are prohibited. Fraudulent entries will be disqualified.</p>
+        <p style="margin-bottom:12px;">6. <strong>Changes:</strong> Tord Labs reserves the right to modify, suspend, or cancel the airdrop campaign at any time without prior notice.</p>
+        <p style="margin-bottom:12px;">7. <strong>Privacy:</strong> Wallet addresses and social account information collected are used solely for the purpose of this airdrop campaign.</p>
+        <p>8. <strong>Disclaimer:</strong> $TORD tokens are utility tokens. This airdrop does not constitute an investment offering. Participants should comply with their local regulations regarding cryptocurrency.</p>
+      </div>
+      <button class="btn-outline" style="margin-top:20px;" onclick="document.getElementById('termsModal').style.display='none'">Close</button>
+    </div>
+  </div>
+
+  <script>
+    let AIRDROP_END = new Date();
+    AIRDROP_END.setDate(AIRDROP_END.getDate() + 14);
+    let CAMPAIGN_ID = null;
+
+    const TASKS = {
+      wallet: { points: 0, completed: false, requiresWallet: true },
+      follow: { points: 10, completed: false },
+      tweet: { points: 10, completed: false },
+      telegram: { points: 10, completed: false },
+      share: { points: 10, completed: false },
+      bonus: { points: 10, completed: false, locked: true }
+    };
+
+    let connectedWallet = null;
+    let currentExpand = null;
+
+    let campaignActive = true;
+
+    async function loadCampaignFromAPI() {
+      try {
+        const res = await fetch('/api/campaign');
+        const data = await res.json();
+        if (data.campaign) {
+          CAMPAIGN_ID = data.campaign.id;
+          if (data.campaign.end_date) AIRDROP_END = new Date(data.campaign.end_date);
+
+          campaignActive = data.campaign.is_active;
+          if (data.campaign.end_date && new Date(data.campaign.end_date) < new Date()) {
+            campaignActive = false;
+          }
+
+          if (data.campaign.title) {
+            const titleEl = document.querySelector('.card-body h3');
+            if (titleEl) titleEl.innerHTML = data.campaign.title + '<br><span style="color:var(--text-primary);font-size:14px;">Total Prize ' + (data.campaign.total_prize || '10,000,000 $TORD') + '</span>';
+          }
+          if (data.campaign.description) {
+            const descEl = document.querySelector('.card-body p');
+            if (descEl) descEl.textContent = data.campaign.description;
+          }
+          if (data.campaign.banner_url) {
+            const bannerEl = document.querySelector('.banner-img');
+            if (bannerEl) bannerEl.src = data.campaign.banner_url;
+          }
+
+          if (data.tasks && data.tasks.length > 0) {
+            data.tasks.forEach(task => {
+              const type = task.task_key || task.task_type;
+              if (type) {
+                if (TASKS[type]) TASKS[type].verify_delay = task.verify_delay || 0;
+                if (type === 'tweet' && task.action_url) {
+                  window.TWEET_ACTION_URL = task.action_url;
+                }
+                const item = document.querySelector('[data-task="' + type + '"]');
+                if (item) {
+                  const textEl = item.querySelector('.entry-text');
+                  if (textEl && task.label) textEl.textContent = task.label;
+                  const pointsEl = item.querySelector('.entry-points');
+                  if (pointsEl && task.points) pointsEl.textContent = (task.points >= 1000 ? Math.round(task.points/1000) + 'K' : task.points) + ' $TORD';
+                }
+              }
+            });
+            const waysHeader = document.querySelector('.ways-header span');
+            if (waysHeader) waysHeader.textContent = data.tasks.length;
+          }
+
+          if (!campaignActive) {
+            showCampaignEnded();
+          }
+        } else {
+          campaignActive = false;
+          showCampaignEnded();
+        }
+      } catch(e) { console.log('API not available, using defaults'); }
+    }
+
+    function showCampaignEnded() {
+      const loginSection = document.getElementById('loginSection');
+      if (loginSection) {
+        loginSection.innerHTML = '<div style="text-align:center;padding:20px;"><div style="font-family:Orbitron,sans-serif;font-size:18px;color:var(--accent-gold);margin-bottom:8px;">Campaign Ended</div><p style="color:var(--text-secondary);font-size:14px;">This campaign has ended. Stay tuned for the next one!</p></div>';
+      }
+      const entriesCard = document.getElementById('entriesCard');
+      if (entriesCard) {
+        entriesCard.style.opacity = '0.5';
+        entriesCard.style.pointerEvents = 'none';
+      }
+      document.getElementById('cd-days').textContent = '0';
+      document.getElementById('cd-hours').textContent = '00';
+      document.getElementById('cd-mins').textContent = '00';
+    }
+
+    async function loadState() {
+      try {
+        const saved = localStorage.getItem('tord_airdrop');
+        if (saved) {
+          const data = JSON.parse(saved);
+          Object.keys(data.tasks || {}).forEach(k => {
+            if (TASKS[k]) {
+              TASKS[k].completed = data.tasks[k].completed;
+            }
+          });
+          connectedWallet = data.wallet || null;
+          connectedXUser = data.xUser || null;
+          if (data.campaignId) CAMPAIGN_ID = data.campaignId;
+        }
+      } catch(e) {}
+      if (connectedXUser && CAMPAIGN_ID) {
+        await loadProgressFromDB(connectedXUser);
+        saveState();
+      }
+      updateUI();
+    }
+
+    function saveState() {
+      const data = { tasks: {}, wallet: connectedWallet, xUser: connectedXUser, endDate: AIRDROP_END.toISOString(), campaignId: CAMPAIGN_ID };
+      Object.keys(TASKS).forEach(k => {
+        data.tasks[k] = { completed: TASKS[k].completed, points: TASKS[k].points };
+        if (k === 'tweet' && TASKS[k].tagged_friends) data.tasks[k].tagged_friends = TASKS[k].tagged_friends;
+      });
+      localStorage.setItem('tord_airdrop', JSON.stringify(data));
+
+      if (connectedXUser && CAMPAIGN_ID) {
+        fetch('/api/participate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            campaign_id: CAMPAIGN_ID,
+            x_username: connectedXUser,
+            wallet_address: connectedWallet,
+            tasks_completed: data.tasks
+          })
+        }).catch(() => {});
+      }
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function updateUI() {
+      let total = 0;
+      let completedCount = 0;
+      const totalTasks = 6;
+
+      Object.keys(TASKS).forEach(k => {
+        if (TASKS[k].completed) {
+          total += TASKS[k].points;
+          completedCount++;
+        }
+      });
+
+      const rewardDisplay = total > 0 ? (total * 1000).toLocaleString() : '0';
+      document.getElementById('totalEntries').textContent = rewardDisplay;
+
+      const coreTasks = ['wallet','follow','tweet','telegram'];
+      const allCoreDone = coreTasks.every(k => TASKS[k].completed);
+
+      if (allCoreDone) {
+        TASKS.share.locked = false;
+        TASKS.bonus.locked = false;
+        document.getElementById('bonusLock').style.display = 'none';
+      }
+
+      document.querySelectorAll('.entry-item').forEach(item => {
+        const task = item.dataset.task;
+        if (TASKS[task] && TASKS[task].completed) {
+          item.classList.add('entry-completed');
+          const pts = item.querySelector('.entry-points');
+          if (pts) pts.innerHTML = '&#10003;';
+        }
+      });
+
+      const pct = (completedCount / totalTasks * 100).toFixed(0);
+      document.getElementById('progressBar').style.width = pct + '%';
+      document.getElementById('progressText').textContent = completedCount + ' of ' + totalTasks + ' tasks completed';
+
+      const loginSection = document.getElementById('loginSection');
+      if (connectedXUser && loginSection) {
+        loginSection.innerHTML = '<div class="login-label" style="color:var(--accent-green);display:flex;align-items:center;justify-content:center;gap:12px;">&#10003; Connected as <strong>@' + connectedXUser + '</strong><button onclick="logoutX()" style="background:transparent;border:1px solid #ef4444;color:#ef4444;padding:4px 12px;border-radius:6px;cursor:pointer;font-size:12px;font-family:inherit;">Logout</button></div>';
+      }
+    }
+
+    function toggleTask(el) {
+      const task = el.dataset.task;
+      if (!task) return;
+      if (!campaignActive) { showToast('This campaign has ended'); return; }
+      if (TASKS[task].completed) return;
+      if (!connectedXUser) {
+        showToast('Connect with X first to complete tasks');
+        return;
+      }
+      if (TASKS[task].locked) {
+        showToast('Complete all other tasks first to unlock this');
+        return;
+      }
+
+      const expandEl = document.getElementById('expand-' + task);
+      if (!expandEl) return;
+
+      if (currentExpand && currentExpand !== expandEl) {
+        currentExpand.classList.remove('active');
+      }
+
+      if (task === 'share') {
+      }
+
+      if (task === 'bonus') {
+        const coreTasks = ['wallet','follow','tweet','telegram','share'];
+        const allDone = coreTasks.every(k => TASKS[k].completed);
+        if (allDone) {
+          document.getElementById('bonusContent').innerHTML =
+            '<button class="btn-primary" onclick="completeTask(\'bonus\')">Claim 20 Bonus Entries</button>';
+        } else {
+          document.getElementById('bonusContent').innerHTML =
+            '<p style="color:var(--text-secondary);font-size:14px;text-align:center;margin:8px 0;">Complete all tasks above first.</p>';
+        }
+      }
+
+      expandEl.classList.toggle('active');
+      currentExpand = expandEl.classList.contains('active') ? expandEl : null;
+    }
+
+    function onFollowClicked() {
+      setTimeout(() => {
+        document.getElementById('followVerifyBtn').style.display = 'block';
+        showToast('After following, click "I\'ve Followed - Verify" to complete');
+      }, 3000);
+    }
+
+    function onTelegramClicked() {
+      let countdown = 5;
+      const btn = document.getElementById('telegramVerifyBtn');
+      btn.style.display = 'block';
+      btn.disabled = true;
+      btn.textContent = 'Wait ' + countdown + 's...';
+      btn.style.opacity = '0.5';
+      const iv = setInterval(() => {
+        countdown--;
+        if (countdown <= 0) {
+          clearInterval(iv);
+          btn.disabled = false;
+          btn.textContent = "I've Joined - Verify ✓";
+          btn.style.opacity = '1';
+        } else {
+          btn.textContent = 'Wait ' + countdown + 's...';
+        }
+      }, 1000);
+    }
+
+    function onVisitClicked() {
+      let countdown = 5;
+      const btn = document.getElementById('visitVerifyBtn');
+      btn.style.display = 'block';
+      btn.disabled = true;
+      btn.textContent = 'Wait ' + countdown + 's...';
+      btn.style.opacity = '0.5';
+      const iv = setInterval(() => {
+        countdown--;
+        if (countdown <= 0) {
+          clearInterval(iv);
+          btn.disabled = false;
+          btn.textContent = "I've Visited - Verify ✓";
+          btn.style.opacity = '1';
+        } else {
+          btn.textContent = 'Wait ' + countdown + 's...';
+        }
+      }, 1000);
+    }
+
+    function postTweetWithTags() {
+      const tags = [];
+      for (let i = 1; i <= 5; i++) {
+        let val = document.getElementById('tag' + i).value.trim();
+        if (val && !val.startsWith('@')) val = '@' + val;
+        if (val) tags.push(val);
+      }
+      const unique = [...new Set(tags.map(t => t.toLowerCase()))];
+      if (unique.length < 5) {
+        showToast('Please enter 5 unique different X usernames');
+        return;
+      }
+      TASKS.tweet.tagged_friends = tags;
+      const friendsLine = '\n\nTag 5 friends 👇\n' + tags.join(' ');
+      let url;
+      if (window.TWEET_ACTION_URL) {
+        try {
+          const parsed = new URL(window.TWEET_ACTION_URL);
+          const existingText = parsed.searchParams.get('text') || '';
+          parsed.searchParams.set('text', existingText + friendsLine);
+          url = parsed.toString().replace('twitter.com', 'x.com');
+        } catch(e) {
+          const text = '🚀 I\'m joining the $TORD Airdrop sponsored by @TordDeFi 🚀' + friendsLine + '\n\n#Airdrop #Giveaway #TordLabs $TORD';
+          url = 'https://x.com/intent/post?text=' + encodeURIComponent(text);
+        }
+      } else {
+        const text = '🚀 I\'m joining the $TORD Airdrop sponsored by @TordDeFi 🚀' + friendsLine + '\n\n#Airdrop #Giveaway #TordLabs $TORD';
+        url = 'https://x.com/intent/post?text=' + encodeURIComponent(text);
+      }
+      window.open(url, '_blank');
+      setTimeout(() => {
+        document.getElementById('tweetVerifyBtn').style.display = 'block';
+        document.getElementById('tweetOpenBtn').style.display = 'none';
+        showToast('After tweeting, click "I\'ve Tweeted - Verify" to complete');
+      }, 3000);
+    }
+
+    function completeTask(task) {
+      if (!campaignActive) { showToast('This campaign has ended'); return; }
+      if (TASKS[task].completed) return;
+
+      if (task === 'wallet') {
+        const addr = document.getElementById('walletInput').value.trim();
+        if (!addr || !addr.startsWith('0x') || addr.length < 10) {
+          showToast('Please enter a valid wallet address');
+          return;
+        }
+        connectedWallet = addr;
+      }
+
+      TASKS[task].completed = true;
+      saveState();
+
+      const expandEl = document.getElementById('expand-' + task);
+      if (expandEl) expandEl.classList.remove('active');
+      currentExpand = null;
+
+      showToast('+' + (TASKS[task].points * 1000) + ' $TORD earned!');
+      updateUI();
+    }
+
+    let connectedXUser = null;
+
+    function logoutX() {
+      connectedXUser = null;
+      connectedWallet = null;
+      Object.keys(TASKS).forEach(k => { TASKS[k].completed = false; });
+      localStorage.removeItem('tord_airdrop');
+      updateUI();
+      const loginSection = document.getElementById('loginSection');
+      if (loginSection) {
+        loginSection.innerHTML = '<div class="login-label">Connect to participate:</div><button class="btn-x" onclick="connectX()"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Connect with X</button>';
+      }
+      showToast('Logged out successfully');
+    }
+
+    window.addEventListener('message', function(e) {
+      if (e.origin !== window.location.origin) return;
+      if (e.data && e.data.type === 'x_auth_success' && e.data.username) {
+        connectedXUser = e.data.username;
+        loadProgressFromDB(connectedXUser).then(function() {
+          saveState();
+          updateUI();
+          showToast('Connected as @' + connectedXUser);
+        });
+      } else if (e.data && e.data.type === 'x_auth_error') {
+        showToast(e.data.error || 'X authorization failed');
+      }
+    });
+
+    async function loadProgressFromDB(username) {
+      if (!CAMPAIGN_ID || !username) return;
+      try {
+        var res = await fetch('/api/participant-progress?campaign_id=' + CAMPAIGN_ID + '&x_username=' + encodeURIComponent(username));
+        var data = await res.json();
+        if (data.found && data.tasks_completed) {
+          Object.keys(data.tasks_completed).forEach(function(k) {
+            if (TASKS[k] && data.tasks_completed[k].completed) {
+              TASKS[k].completed = true;
+              if (data.tasks_completed[k].points) TASKS[k].points = data.tasks_completed[k].points;
+            }
+          });
+          if (data.wallet_address) connectedWallet = data.wallet_address;
+        }
+      } catch(e) { console.log('Could not load progress from server'); }
+    }
+
+    function connectX() {
+      if (!campaignActive) { showToast('This campaign has ended'); return; }
+      if (connectedXUser) {
+        showToast('Already connected as @' + connectedXUser);
+        return;
+      }
+
+      var width = 600, height = 700;
+      var left = (screen.width - width) / 2;
+      var top = (screen.height - height) / 2;
+
+      var siteOrigin = window.location.origin;
+      var authUrl = '/api/auth/x/start?redirect=' + encodeURIComponent(siteOrigin);
+
+      var authWindow = window.open(
+        authUrl,
+        'Connect with X',
+        'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top + ',toolbar=no,menubar=no'
+      );
+
+      if (!authWindow) {
+        showToast('Please allow popups to connect with X');
+      }
+    }
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = AIRDROP_END - now;
+
+      if (diff <= 0) {
+        document.getElementById('cd-days').textContent = '0';
+        document.getElementById('cd-hours').textContent = '00';
+        document.getElementById('cd-mins').textContent = '00';
+        if (campaignActive) {
+          campaignActive = false;
+          showCampaignEnded();
+        }
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+      document.getElementById('cd-days').textContent = days;
+      document.getElementById('cd-hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('cd-mins').textContent = mins.toString().padStart(2, '0');
+    }
+
+    loadCampaignFromAPI().then(() => {
+      loadState();
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    });
+  </script>
+  <script>
+  (function(){
+    var vid = localStorage.getItem('tord_vid');
+    if(!vid){vid='v_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,10);localStorage.setItem('tord_vid',vid)}
+    function track(){fetch('/api/track/visit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({page:location.pathname,visitor_id:vid,wallet:localStorage.getItem('walletAddress')||''})}).catch(function(){})}
+    function heartbeat(){fetch('/api/track/heartbeat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({visitor_id:vid,page:location.pathname})}).catch(function(){})}
+    track();setInterval(heartbeat,60000);
+  })();
+  </script>
+
+  <style>
+    .fab-container { position: fixed; z-index: 50; right: 24px; bottom: 24px; touch-action: none; }
+    .fab-menu {
+      position: absolute; bottom: 64px; right: 0;
+      transition: all 0.3s;
+      opacity: 0; transform: scale(0.75) translateY(16px); pointer-events: none;
+    }
+    .fab-menu.open { opacity: 1; transform: scale(1) translateY(0); pointer-events: auto; }
+    .fab-menu-inner {
+      background: rgba(20,20,20,0.97); backdrop-filter: blur(24px);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 16px;
+      padding: 16px 12px; width: 240px; box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    }
+    .fab-section-label {
+      font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase;
+      letter-spacing: 0.15em; padding: 4px 12px 12px; font-weight: 600;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .fab-nav-btn {
+      display: flex; align-items: center; gap: 12px; width: 100%;
+      padding: 10px 12px; border: none; background: transparent; color: #fff;
+      font-size: 14px; font-family: 'Space Grotesk', sans-serif;
+      border-radius: 12px; cursor: pointer; text-align: left; text-decoration: none;
+    }
+    .fab-nav-btn:hover { background: rgba(255,255,255,0.08); }
+    .fab-nav-btn .icon { color: #f5a623; flex-shrink: 0; display: flex; align-items: center; }
+    .fab-nav-btn .soon-badge {
+      font-size: 9px; font-weight: 700; color: #fff; background: #e53e3e;
+      padding: 2px 6px; border-radius: 4px; letter-spacing: 0.3px; text-transform: uppercase;
+    }
+    .fab-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 12px 0; }
+    .fab-social-row { display: flex; align-items: center; justify-content: center; gap: 16px; padding: 8px 12px; }
+    .fab-social-row a { padding: 8px; border-radius: 8px; display: flex; color: rgba(255,255,255,0.4); text-decoration: none; }
+    .fab-social-row a:hover { color: #fff; }
+    .fab-trigger {
+      width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      background: #000; border: 1px solid rgba(255,255,255,0.1); cursor: grab; user-select: none;
+      box-shadow: 0 0 8px rgba(255,215,0,0.12), 0 2px 10px rgba(0,0,0,0.3); touch-action: none;
+      position: relative; overflow: hidden;
+    }
+    .fab-trigger::before {
+      content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, transparent 0%, transparent 60%, rgba(245,166,35,0.3) 70%, #f5a623 80%, #ffcc00 85%, #f5a623 90%, rgba(245,166,35,0.3) 95%, transparent 100%);
+      animation: fabSnake 3s linear infinite; z-index: -1;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude; padding: 2px;
+    }
+    @keyframes fabSnake { to { transform: rotate(360deg); } }
+    .fab-trigger img { width: 36px; height: 36px; pointer-events: none; filter: drop-shadow(0 0 8px rgba(255,215,0,0.4)) drop-shadow(0 0 20px rgba(255,215,0,0.2)); }
+    .fab-overlay { position: fixed; inset: 0; z-index: 40; display: none; }
+    .fab-overlay.open { display: block; }
+    .fab-back-top {
+      position: fixed; bottom: 32px; right: 96px; z-index: 50;
+      height: 48px; width: 48px; border-radius: 50%; background: #f5a623; color: #000;
+      display: none; align-items: center; justify-content: center; border: none; cursor: pointer;
+      box-shadow: 0 4px 12px rgba(245,166,35,0.3);
+    }
+    .fab-back-top.visible { display: flex; }
+  </style>
+
+  <button class="fab-back-top" id="fabBackTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+
+  <div class="fab-overlay" id="fabOverlay" onclick="toggleFabMenu()"></div>
+
+  <div class="fab-container" id="fabContainer">
+    <div class="fab-menu" id="fabMenu">
+      <div class="fab-menu-inner">
+        <p class="fab-section-label">Navigation</p>
+        <a href="/" class="fab-nav-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span>Home</span></a>
+        <a href="/tordai" class="fab-nav-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 014 4c0 1.95-2 4-4 7-2-3-4-5.05-4-7a4 4 0 014-4z"/><path d="M4.5 14.5C3 16 3 18 3 20c3 0 5-1 6.5-2.5"/><path d="M14.5 17.5C16 19 18 20 21 20c0-2 0-4-1.5-5.5"/></svg></span><span>Tord AI</span></a>
+        <a href="/dashboard" class="fab-nav-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span><span>Dashboard</span></a>
+        <a href="/trading" class="fab-nav-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span><span>Trading</span></a>
+        <a href="/airdrop" class="fab-nav-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v10l4.5-4.5"/><path d="M12 12l-4.5-4.5"/><circle cx="12" cy="20" r="2"/><path d="M4 20h4"/><path d="M16 20h4"/></svg></span><span>Airdrop</span></a>
+        <a href="/pricing" class="fab-nav-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 000 4h4a2 2 0 010 4H8"/><path d="M12 6v2m0 8v2"/></svg></span><span>Pricing</span></a>
+        <a href="/tordpad" class="fab-nav-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6v12a3 3 0 103-3H6a3 3 0 103 3V6a3 3 0 10-3 3h12a3 3 0 10-3-3"/></svg></span><span>TordPad</span><span class="soon-badge">Soon</span></a>
+
+        <div class="fab-divider"></div>
+
+        <button class="fab-nav-btn" id="fabCopyContract" onclick="copyFabContract()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          <span id="fabContractText">Copy Smart Contract</span>
+        </button>
+
+        <div class="fab-divider"></div>
+
+        <div class="fab-social-row">
+          <a href="https://x.com/torddefi" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://t.me/TordLabs" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </a>
+          <a href="https://github.com/tordlabs" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="fab-trigger" id="fabTrigger" onpointerdown="fabPointerDown(event)">
+      <img src="/logo.png" alt="Menu" id="fabIcon" style="width:36px;height:36px;pointer-events:none;filter:drop-shadow(0 0 8px rgba(255,215,0,0.4)) drop-shadow(0 0 20px rgba(255,215,0,0.2));" />
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    var fabOpen = false;
+    var fabDragging = false;
+    var fabStartX = 0, fabStartY = 0, fabStartRight = 24, fabStartBottom = 24, fabMoved = false;
+    var fabRight = 24, fabBottom = 24;
+    var container = document.getElementById('fabContainer');
+    var contract = '0x0000000000000000000000000000000000000000';
+
+    fetch('/api/settings/public').then(function(r){ return r.json(); }).then(function(s) {
+      if (s.tord_contract) contract = s.tord_contract;
+    }).catch(function(){});
+
+    window.fabPointerDown = function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      fabDragging = true;
+      fabMoved = false;
+      fabStartX = e.clientX;
+      fabStartY = e.clientY;
+      fabStartRight = fabRight;
+      fabStartBottom = fabBottom;
+    };
+
+    window.addEventListener('pointermove', function(e) {
+      if (!fabDragging) return;
+      e.preventDefault();
+      var dx = e.clientX - fabStartX;
+      var dy = e.clientY - fabStartY;
+      if (Math.abs(dx) > 5 || Math.abs(dy) > 5) fabMoved = true;
+      fabRight = Math.max(8, Math.min(fabStartRight - dx, window.innerWidth - 64));
+      fabBottom = Math.max(8, Math.min(fabStartBottom - dy, window.innerHeight - 64));
+      container.style.right = fabRight + 'px';
+      container.style.bottom = fabBottom + 'px';
+    }, { passive: false });
+
+    window.addEventListener('pointerup', function() {
+      if (!fabDragging) return;
+      fabDragging = false;
+      if (!fabMoved) toggleFabMenu();
+    });
+
+    window.toggleFabMenu = function() {
+      fabOpen = !fabOpen;
+      document.getElementById('fabMenu').classList.toggle('open', fabOpen);
+      document.getElementById('fabOverlay').classList.toggle('open', fabOpen);
+      var trigger = document.getElementById('fabTrigger');
+      if (fabOpen) {
+        trigger.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+      } else {
+        trigger.innerHTML = '<img src="/logo.png" alt="Menu" id="fabIcon" style="width:36px;height:36px;pointer-events:none;filter:drop-shadow(0 0 8px rgba(255,215,0,0.4)) drop-shadow(0 0 20px rgba(255,215,0,0.2));" />';
+      }
+    };
+
+    window.copyFabContract = function() {
+      navigator.clipboard.writeText(contract);
+      document.getElementById('fabContractText').textContent = 'Copied!';
+      setTimeout(function() { document.getElementById('fabContractText').textContent = 'Copy Smart Contract'; }, 2000);
+    };
+
+    window.addEventListener('scroll', function() {
+      var btn = document.getElementById('fabBackTop');
+      if (window.scrollY > 400) btn.classList.add('visible');
+      else btn.classList.remove('visible');
+    }, { passive: true });
+  })();
+  </script>
+</body>
+</html>
